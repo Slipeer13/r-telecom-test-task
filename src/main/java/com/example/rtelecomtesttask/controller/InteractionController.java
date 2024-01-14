@@ -28,10 +28,10 @@ public class InteractionController {
     public ResponseEntity<List<List<Item>>> getInteractionsList(@RequestParam String mediatype) {
         if(!mediatype.isEmpty()) {
             List<List<Item>> userDataList = userDataService.getUserDataList(mediatype);
-            log.info(String.format("ответ на get-запрос к /interactionsList, RequestParam = %s, статус 200", mediatype));
+            log.info(String.format("get-запрос к /interactionsList, RequestParam = %s, статус 200", mediatype));
             return ResponseEntity.ok(userDataList);
         } else {
-            log.info("ответ на get-запрос к /interactionsList, параметр mediatype пустой, статус 404");
+            log.info("get-запрос к /interactionsList, параметр mediatype пустой, статус 404");
             throw new NoSuchParameterException("параметр mediatype не должен быть пустым");
         }
     }
@@ -40,10 +40,10 @@ public class InteractionController {
     public ResponseEntity<List<MessageInfo>> getInteraction(@PathVariable(name="interactionId")String interactionId) {
         List<MessageInfo> messages = messageService.getMessageInfoList(interactionId);
         if (messages != null && !messages.isEmpty()) {
-            log.info(String.format("ответ на get-запрос к /interaction/%s, статус 200", interactionId));
+            log.info(String.format("get-запрос к /interaction/%s, статус 200", interactionId));
             return ResponseEntity.ok(messages);
         } else {
-            log.info("ответ на get-запрос к /interaction/{interactionId} , статус 404");
+            log.info(String.format("get-запрос к /interaction/{interactionId} , сообщений по id = %s нет, статус 404",interactionId));
             throw new NoSuchElementException(String.format("сообщений по id = %s нет",interactionId));
         }
     }

@@ -41,7 +41,7 @@ class UserDataHandler extends DefaultHandler {
         if ("userData".equalsIgnoreCase(qName)) {
             insideUserData = false;
         } else if ("item".equalsIgnoreCase(qName) && insideUserData) {
-            item.setValue(value.toString().trim());
+            item.setValue(value.toString());
             items.add(item);
             item = null;
         }

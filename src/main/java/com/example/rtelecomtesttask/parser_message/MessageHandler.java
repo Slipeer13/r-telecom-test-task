@@ -42,7 +42,7 @@ class MessageHandler extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) {
         if("message".equalsIgnoreCase(qName)) {
-            messageInfo.setMessage(message.toString().trim());
+            messageInfo.setMessage(message.toString());
             messageInfos.add(messageInfo);
             messageInfo = null;
         }
